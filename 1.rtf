@@ -1,0 +1,27 @@
+{\rtf1\ansi\ansicpg936\cocoartf1265
+{\fonttbl\f0\fmodern\fcharset0 Courier;}
+{\colortbl;\red255\green255\blue255;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww14040\viewh10200\viewkind0
+\deftab720
+\pard\pardeftab720
+
+\f0\fs24 \cf0 /*\
+ID: yuchaoz1\
+PROG: test\
+LANG: C++\
+*/\
+#include <iostream>\
+#include <fstream>\
+#include <string>\
+\
+using namespace std;\
+\
+int main() \{\
+    ofstream fout ("test.out");\
+    ifstream fin ("test.in");\
+    int a, b;\
+    fin >> a >> b;\
+    fout << a+b << endl;\
+    return 0;\
+\}\
+}
