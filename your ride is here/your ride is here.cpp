@@ -25,11 +25,14 @@ int main()
 	output.open("ride.out");
 
 	string comet, group;
+    //int should init with 1 instead of 0. Because you will do multiplication later.
 	int comet_asc = 1, group_asc = 1;
+    //read from file
 	input>>comet>>group;
 	
 	for(int i = 0; i < comet.length(); i++)
 	{
+        //use string[i] to get the specfic char in the string
 		comet_asc = comet_asc * ((int) comet[i] - 64);
 	}
 
@@ -46,6 +49,7 @@ int main()
 	{
 		output<<"STAY"<<endl;
 	}
+    //remember to close the file
 	input.close();
 	output.close();
 	return 0;
