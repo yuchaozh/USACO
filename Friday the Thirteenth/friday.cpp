@@ -84,6 +84,12 @@ int main()
 	switch(month)
 	{
 		case 1:
+		case 3:
+		case 5:
+		case 7:
+		case 8:
+		case 10:
+		case 0:
 		{
 			previousDays = thirtyOne( previousDays);
 			break;
@@ -93,54 +99,12 @@ int main()
 			previousDays = leap( previousDays,  year);
 			break;
 		}
-		case 3:
-		{
-			previousDays = thirtyOne( previousDays);
-			break;
-		}
 		case 4:
-		{
-			previousDays = thirty( previousDays);
-			break;
-		}
-		case 5:
-		{
-			previousDays = thirtyOne( previousDays);
-			break;
-		}
 		case 6:
-		{
-			previousDays = thirty( previousDays);
-			break;
-		}
-		case 7:
-		{
-			previousDays = thirtyOne( previousDays);
-			break;
-		}
-		case 8:
-		{
-			previousDays = thirtyOne( previousDays);
-			break;
-		}
 		case 9:
-		{
-			previousDays = thirty( previousDays);
-			break;
-		}
-		case 10:
-		{
-			previousDays = thirtyOne( previousDays);
-			break;
-		}
 		case 11:
 		{
 			previousDays = thirty( previousDays);
-			break;
-		}
-		case 0:
-		{
-			previousDays = thirtyOne( previousDays);
 			break;
 		}
 		default:
