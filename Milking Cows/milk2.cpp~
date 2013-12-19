@@ -1,0 +1,104 @@
+/*
+ID: yuchaoz1
+PROG: milk2
+LANG: C++
+*/
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int main()
+{
+	ifstream inputFile;
+	ofstream outputFile;
+	int farmers = 0;
+	int start = 0;
+	int reStart = 0;
+	int end = 0;
+	int time = 0;
+	int currentContinueTime = 0;
+	int currentIntervalTime = 0;
+	int maxContinueTime = 0;
+	int maxIntervalTime = 0;
+	bool conti = true;
+	vector<int> unsortedTimes;
+	vector<int> times;
+	vector<int> starts;
+	vector<int> ends;
+	inputFile.open("milk2.in");
+	inputFile>>farmers;
+	//cout<<"farmers: "<<farmers<<endl;
+	while(inputFile>>start>>end)
+	{
+		unsortedTimes.push_back(start);
+		unsortedTimes.push_back(end);
+		starts.push_back(start);
+	}
+	
+	//sort
+	sort(starts.begin(), starts.end());
+	for (int i = 0; i < starts.size(); i++)
+	{
+		start = starts[i];
+		for (int j = 0; j < unsortedTimes.size(); j = j + 2)
+		{
+			if (start == unsortedTimes[j])
+			{
+				times.push_back(unsortedTimes[j]);
+				times.push_back(unsortedTimes[j+1]);
+			}
+		}
+	}
+	/**
+	for (int i = 0; i < times.size(); i = i + 2)
+	{
+		cout<<times[i]<<"  "<<times[i + 1]<<"  ";
+	}
+	cout<<endl;
+	**/
+	start = times[0];
+	end = times[1];
+	//if (farmers == 1)
+		maxContinueTime = end - start;
+	//else
+	//{
+	for (int i = 0; i < times.size(); i = i + 2)
+	{
+		if (times[i + 2] <= end)
+		{
+			if (times[i + 1] > end)
+			{
+				end = times[i+1];
+			}
+			if (times[i + 3] > end)
+			{
+				end = times[i + 3];
+			}
+			continue;
+		}
+		else
+		{
+			cout<<"start: "<<start<<endl;
+			cout<<"end: "<<end<<endl;
+			currentContinueTime = end - start;
+			currentIntervalTime = times[i + 2] - end;
+			start = times[i + 2];
+			end = times[i + 3];
+			if (maxContinueTime < currentContinueTime)
+				maxContinueTime = currentContinueTime;
+			if (maxIntervalTime < currentIntervalTime)
+				maxIntervalTime = currentIntervalTime;
+		}
+	}
+	//}	
+	
+	outputFile.open("milk2.out");
+	outputFile<<maxContinueTime<<" "<<maxIntervalTime<<endl;
+	inputFile.close();
+	outputFile.close();
+	return 0;
+}
